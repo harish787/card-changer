@@ -1,0 +1,141 @@
+.wrapper{
+    background-color: white;
+    margin: 10px auto;
+    padding: 20px;
+    max-width: 90vw;
+    height: auto;
+    font-weight: lighter;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+
+}
+.wrapper .cards {
+    scrollbar-width: none;
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: hidden;
+    
+
+}
+.main-heading{
+    padding:10px;
+    border-radius: 52px;
+    background-color: rgb(145, 198, 248);
+    width:368px;
+    height:40px;
+    display: block;
+    margin:0 auto;
+}
+.wrapper .main-heading h1,.heading h2 {
+    margin:0;
+    padding:0;
+    text-align: center;
+    font-weight: lighter;
+    
+}
+.heading{
+    background-color: rgb(134, 178, 207);
+    width:260px;
+    height:30px;
+    padding:10px;
+    border-radius: 52px;
+    
+}
+.main-cards .card {
+    width: 260px;
+    height: auto;
+    background-color: rgb(211, 217, 221);
+    margin: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.main-cards .card img{
+    border-radius: 15px 15px 0 0;
+}
+.main-cards .card .img{
+    width: auto;
+    height: 150px;
+    margin:0;
+    padding: 0;
+    border-radius: 15px 15px 0 0;
+
+}
+.main-cards .card .details{
+    clear: both;
+    width:100%;
+    height:auto;
+    padding:0px auto;
+    margin:0px auto;
+    background-color: rgb(3, 38, 150);
+    border-radius:0 0 15px 15px;
+}
+.main-cards .card p{
+    text-align: center;
+    margin: 0;
+    color:rgb(221, 201, 201);
+    
+}
+.main-cards .card .ucc{
+    margin-bottom: 15px;
+}
+.main-cards .card .c{
+    margin-top: 15px;
+}
+.main-cards .card a{
+    width:60px;
+    height:20px;
+    border: 1.5px solid silver;
+    background-color: rgb(45, 30, 250);
+    border-radius: 5px;
+    color:rgb(221, 201, 201);
+    text-decoration: none;
+    padding:5px;
+    margin:60px;
+    transition: transform 1s;
+    filter: blur(2.5px);
+    cursor: initial;
+}
+.main-cards .card .pc{
+    width:185px;
+    height:50px;
+    padding: 3px;
+    text-align: center;
+    margin:15px 30px;
+    border: 1.5px solid silver;
+    background-color: rgb(167, 115, 4);
+    border-radius: 5px;
+    color:rgb(216, 245, 186);
+    text-decoration: none;
+   font-size: 1.2rem;
+    transition: transform 1s;
+    cursor: pointer;
+}
+.main-cards .card a:hover{
+    scale:1.05s;
+}
+.main-cards,.cat1,.cat2,.cat3 {
+    display: flex;
+    float: left;
+    /* flex-wrap: wrap; */
+    overflow-x: scroll;
+    transition: transform 1s ease-in-out;
+    transform:translateX(0%);
+    scroll-behavior: smooth;
+    height:auto;
+    margin-bottom: 10px;
+}
+.next{
+    visibility: visible;
+    margin-top: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width:55px;
+    height:55px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    left: auto;
+    cursor: pointer;
+}

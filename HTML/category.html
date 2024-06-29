@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cards</title>
+    <link href="../CSS/category.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper" id="wrap">
+        <div class="main-heading">
+            <h1>GRAB DISCOUNT</h1>
+        </div>
+        <div class="category">
+            <button>
+                <select id="categories">
+
+                    <option value="default">Categories</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="food">Food</option>
+                    <option value="voucher">Voucher</option>
+                    <option value="others">Others</option>
+                </select>
+            </button>
+        </div>
+        <div class="heading">
+            <h2>SHOPPING CARD</h2>
+        </div>
+
+        <div class="cards">
+
+            <div class="main-cards cat1">
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+        fetch('/api/card-details', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (!response.ok) {
+                console.log("Netword issue")
+            }
+            else {
+                return response.json();
+            }
+        }).then(data => {
+            // console.log("this is data", data[0]);
+            const n = data.length;
+            console.log(data);
+            const main_cards = document.getElementsByClassName('main-cards');
+
+            document.getElementById('categories').addEventListener('change',async () => {
+                let c=0;
+                let category = document.getElementById("categories").value;
+    
+                for (let i = 0; i < n; i++) {
+                    var expiryDate = new Date(data[i].expiry);
+                    expiryDate.setHours(0,0,0,0);
+                    var today = new Date();
+                    today.setHours(0,0,0,0)
+                    if(expiryDate < today){
+                        continue;
+                    }
+                    console.log(i);
+                    if (category == 'others') {
+                        // console.log(cat)
+                        let card = document.createElement('div');
+                        card.classList.add('card')
+                        card.innerHTML = `
+                    <div class="img">
+                        <img src="../IMAGES/myntra.png" alt="logo" width="260" height="150">
+                    </div>
+                    <div class="details">
+                        <p class="ucc">YOUR CARD CODE</p>
+                        <a href="#">DRRVF5FR949JF</a>
+                        <p class="c">COMPANY : <span class="card-c-${i}"></span></p>
+                        <p>EXPIRE date : <span class="card-e-${i}"></span></p>
+                        <p>OFFER/DISCOUNT : <span class="card-d-${i}"></span></p>
+                        <button onclick="openCardDetails(1)" class="pc">PURCHASE COUPON</button>
+                    </div>`;
+
+                        const company = document.getElementsByClassName(`card-c-${i}`);
+                        const offer = document.getElementsByClassName(`card-d-${i}`)
+                        const expiry = document.getElementsByClassName(`.card-e-${i}`);
+                        company.innerHTML = data[i].company;
+                        offer.innerHTML = data[i].offer;
+                        expiry.innerHTML = data[i].expiry;
+                        main_cards[0].appendChild(card);
+                    
+                    }
+                    else if (category == cat) {
+                        console.log(cat)
+                        let card = document.createElement('div');
+                        card.classList.add('card')
+                        card.innerHTML = `
+                    <div class="img">
+                        <img src="../IMAGES/myntra.png" alt="logo" width="260" height="150">
+                    </div>
+                    <div class="details">
+                        <p class="ucc">YOUR CARD CODE</p>
+                        <a href="#">DRRVF5FR949JF</a>
+                        <p class="c">COMPANY : <span class="card-c-${i}"></span></p>
+                        <p>EXPIRE date : <span class="card-e-${i}"></span></p>
+                        <p>OFFER/DISCOUNT : <span class="card-d-${i}"></span></p>
+                        <button onclick="openCardDetails(1)" class="pc">PURCHASE COUPON</button>
+                    </div>`;
+
+                        const company = document.getElementsByClassName(`card-c-${i}`);
+                        const offer = document.getElementsByClassName(`card-d-${i}`)
+                        const expiry = document.getElementsByClassName(`card-e-${i}`);
+                        company.innerHTML = data[i].company;
+                        offer.innerHTML = data[i].offer;
+                        expiry.innerHTML = data[i].expiry;
+                        main_cards[0].appendChild(card);
+                    }
+
+                }
+
+            });
+
+            // for (let i = 0; i < n; i++) {
+            //     let card = document.createElement('div');
+            //     card.classList.add('card')
+            //     card.innerHTML = `
+            //         <div class="img">
+            //             <img src="../IMAGES/myntra.png" alt="logo" width="260" height="150">
+            //         </div>
+            //         <div class="details">
+            //             <p class="ucc">YOUR CARD CODE</p>
+            //             <a href="#">DRRVF5FR949JF</a>
+            //             <p class="c">COMPANY : <span class="card-c-${i}"></span></p>
+            //             <p>EXPIRE date : <span class="card-e-${i}"></span></p>
+            //             <p>OFFER/DISCOUNT : <span class="card-d-${i}"></span></p>
+            //             <button onclick="openCardDetails(1)" class="pc">PURCHASE COUPON</button>
+            //         </div>`;
+
+            //     const company = document.querySelector(`card-c-${i}`);
+            //     const offer = document.querySelector(`.card-d-${i}`)
+            //     const expiry = document.querySelector(`.card-e-${i}`);
+            //     company.innerHTML = data[i].company;
+            //     offer.innerHTML = data[i].offer;
+            //     expiry.innerHTML = data[i].expiry;
+
+            // }
+
+        })
+        function openCardDetails(cardNumber) {
+            const url = '/purchase?cardNumber=' + cardNumber;
+
+            // Open the new page
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+
+</html>

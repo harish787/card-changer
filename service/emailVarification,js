@@ -1,0 +1,30 @@
+const nodeMailer = require("nodemailer");
+const {USER_EMAIL,PASS} = process.env;
+let otp =Math.floor(Math.random()*10000);
+if(otp<1000){
+    otp = otp+1000;
+}
+console.log(otp);
+
+async function sendMail(){
+    const transporter = nodeMailer.createTransport({
+        service:'gmail',
+        auth:{
+            user:USER_EMAIL,
+            pass:PASS
+        }
+    })
+    const mailOptions = {
+        from:USER_EMAIL,
+        to:'harishkatariya7939@gmail.com',
+        subject:'testing for varification msg',
+        text:`${otp} sent successfully`
+    }
+    try{
+        const result = await transporter.sendMail(mailOptions);
+        console.log("email sent successfully");
+    }
+    catch(err){
+        console.log("this is error ->",err);
+    }
+}

@@ -1,0 +1,113 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    background-color: #5d7588;
+}
+
+.container {
+    display: flex;
+}
+.formcontainer{
+    display: flex;
+    flex-direction: column;
+    margin: 13px 0px;
+    gap: 8px;
+}
+.left-side {
+    height: 80vh;
+    width: 401px;
+    display: flex;
+    flex-direction: column;
+    background-color: #9da6eb;
+    gap: 15px;
+    font-family:'Poppins';
+    border-top-left-radius: 13px;
+    border-bottom-left-radius:13px ;
+}
+.poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+.right-side {
+  
+}
+.loginsideimage{
+    height:80vh;
+    width: 401px;
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 13px;
+}
+.imgphone {
+    border-radius: 34px;
+    width: 34px;
+}
+
+.lastsection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: -60px;
+}
+.getinput{
+    height: 35px;
+    border-radius: 32px;
+    margin: 10px;
+}
+.userinputsubmit{
+    height: 36px;
+    border-radius: 9px;
+    width: 104px;
+    margin: auto;
+}
+.login-option{
+    display: flex;
+    margin: 0px auto;
+    gap: 23px;
+}
+.googlesection{
+    display: flex;
+    gap: 7px;
+
+}
+.phoneloginoption{
+    display: flex;
+    gap: 7px;
+}
+button {
+    background: linear-gradient(100deg, #9181F4 -5.85%, #5038ED 109.55%);
+    color: white;
+    border-radius: 23px;
+    width: 103px;
+
+}
+.logintext{
+    margin: 8px auto;
+    position: relative;
+    top: 9px;
+}
+span{
+    position: relative;
+    top: 23px;
+    left: 12px;
+    font-weight: 500;
+    font-size: 23px;
+}
+input[type="text"]::placeholder {
+    text-align: center;
+    font-size: large;
+    font-weight: 700;
+}
+
+@media screen and (max-width:500px) {
+    .loginsideimage{
+        display: none;
+    }    
+    .left-side{
+        border-radius: 13px;
+    }
+}
